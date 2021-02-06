@@ -1,0 +1,126 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    outline: 0;
+}
+
+html {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+header {
+    padding: 30px;
+    background-color: gray;
+
+}
+
+div.cabecalho {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+div.esquerda a {
+    font-size: 20pt;
+    color: black;
+    text-decoration: none;
+}
+
+div.direita {
+    display: flex;
+}
+div.direita a {
+    color: black;
+    text-decoration: none;
+    background-color: rgb(200,200,200);
+    padding: 9px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+div.direita input {
+    padding: 9px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+section {
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 12% 0 12%;
+}
+
+div.caixaNoticia {
+    padding: 2%;
+    width: 25%;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+div.caixaNoticia h1,
+div.caixaNoticia h2,
+div.caixaNoticia p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.cadNoticia,
+.cadCategoria {
+    width: 1000px;
+    margin: auto;
+    height: 680px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}   
+
+.cadCategoria {
+    height: 250px;
+}
+
+.cadNoticia div h2,
+.cadCategoria div h2 {
+    margin-left: 10%;
+}
+
+.cadNoticia div,
+.cadCategoria div {
+    margin-bottom: 25px;
+}
+
+.cadNoticia div input,
+.cadCategoria div input {
+    width: 900px;
+    height: 60px;
+    margin: 0 5% 0 5%;
+    border-radius: 10px;
+    font-size: 16pt;
+}
+
+.cadNoticia select {
+    padding: 10px;
+    width: 900px;
+    height: 60px;
+    margin: 0 5% 0 5%;
+    border-radius: 10px;
+    font-size: 16pt;
+}
+
+.cadNoticia textarea {
+    width: 900px;
+    height: 350px;
+    margin: 0 5% 0 5%;
+    border-radius: 10px;
+    font-size: 16pt;
+}
+
+div.verificacao {
+    margin-left: 70%;
+}
