@@ -1,5 +1,7 @@
 # Noticias
-Um site simples, no qual pode-se cadastrar notícias, separadas por categorias. 
+Um site responsivo, no qual pode-se cadastrar, buscar e visualizar notícias, tanto por categoria, quanto por título. 
+
+Para que esse site funcione, é preciso ter instalado Apache e MySQL (XAMPP);
 
 `versão 0.1 ; 06/02/2021`
 Próximos updates 
