@@ -8,19 +8,26 @@
     <link rel="stylesheet" href="style.css">
     <title>Notícias</title>
 </head>
-<body>
+<body style="overflow: initial;">
     <header>
         <div class="cabecalho">
             <div class="esquerda">
-                <a href="noticias.php">Logo</a>
+                <a href="noticias.php">GLnotícias</a>
             </div>
             <div class="direita">
                 <a href="cadastrarCategoria.php">CADASTRAR CATEGORIA</a>
                 <a href="cadastrarNoticia.php">CADASTRAR NOTÍCIA</a>
-                <form action="noticias.php" method="get">
-                    <input type="text" name="nBusca" id="iBusca">
-                    <input type="submit" value="Buscar">
+                <form action="busca.php?iBusca=" method="get">
+                    <input type="text" name="nBusca" id="idBusca">
+                    <input type="submit" id="idSearch" value="Buscar">
                 </form>
+                <div class="hamburger">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
             </div>
         </div>
     </header>
+    <script src="hamburger.js"></script>
+    

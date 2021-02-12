@@ -7,12 +7,12 @@
 }
 
 html {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 header {
-    padding: 30px;
-    background-color: gray;
+    padding: 20px;
+    background-color: rgb(100, 73, 255);
 
 }
 
@@ -26,58 +26,97 @@ div.cabecalho {
 
 div.esquerda a {
     font-size: 20pt;
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
+    margin-left: 30px;
 }
 
 div.direita {
     display: flex;
 }
 div.direita a {
-    color: black;
+    color: white;
     text-decoration: none;
-    background-color: rgb(200,200,200);
+    background-color: rgb(100, 73, 255);
     padding: 9px;
     border-radius: 5px;
     margin: 0 5px;
+}
+
+div.direita a:hover {
+    color: rgb(100, 73, 255);
+    background-color: white;
 }
 
 div.direita input {
+    background-color: rgb(255, 255, 255);
+    color: rgb(100, 73, 255);
     padding: 9px;
     border-radius: 5px;
     margin: 0 5px;
 }
 
+div.direita input[type="submit"] {
+    position: relative;
+    left: -10%
+}
+/*
+div.direita .CzSCNb {
+    display: inline-block;
+    position: relative;
+    fill: currentcolor;
+    line-height: 24px;
+    height: 24px;
+    width: 24px;
+}  
+*/
 section {
-    max-width: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px 12% 0 12%;
+    max-width: 1100px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 div.caixaNoticia {
-    padding: 2%;
-    width: 25%;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(100, 73, 255);
     border-radius: 20px;
-    margin: 20px auto;
+    margin: 20px auto 25px;
+    display: flex;
+    flex-direction: column;
 }
 
-div.caixaNoticia h1,
-div.caixaNoticia h2,
-div.caixaNoticia p {
-    margin-top: 5px;
-    margin-bottom: 10px;
+div.caixaNoticia h1 {
+    position: relative;
+    top: -10%;
+}
+
+div.caixaNoticia a {
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(100, 73, 255);
+    padding: 5%;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    top: 82%;
+}
+
+div.caixaNoticia a:hover {
+    background-color: rgb(219, 213, 255);
 }
 
 .cadNoticia,
 .cadCategoria {
     width: 1000px;
-    margin: auto;
     height: 680px;
+
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    background-color: rgb(100, 73, 255);
     padding: 40px;
 }   
 
@@ -102,6 +141,12 @@ div.caixaNoticia p {
     margin: 0 5% 0 5%;
     border-radius: 10px;
     font-size: 16pt;
+    color: rgb(100, 73, 255);
+}
+
+.cadNoticia div input[type="submit"]:hover,
+.cadCategoria div input[type="submit"]:hover {
+    background-color: rgb(221, 221, 221);
 }
 
 .cadNoticia select {
@@ -121,6 +166,149 @@ div.caixaNoticia p {
     font-size: 16pt;
 }
 
-div.verificacao {
+.verificacao {
     margin-left: 70%;
+}
+
+.visualizar {
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.visualizar h1,
+.visualizar h2,
+.visualizar p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.visualizar h1 {
+    font-size: 25pt;
+}
+.visualizar h2 {
+    font-size: 18pt;
+}
+.visualizar p {
+    font-size: 15pt;
+}
+
+.visualizar a {
+    background-color: rgb(100, 73, 255);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    left: 94%;
+    top: -10px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .direita a,
+    .direita form {
+        display: none;
+    }
+
+    .one,
+    .two,
+    .three {
+        background-color: white;
+        height: 5px;
+        width: 100%;
+        margin: 6px auto;
+    
+        transition-duration: .3s;
+    }
+  
+    .hamburger {
+        width: 40px;
+        height: 30px;
+        margin-right: 20px;
+    }
+  
+    /* fullScreen */
+    .direita.on {
+        position: absolute;
+        top: 0;
+        left: 0;
+    
+        padding-top: 120px;
+
+        width: 100vw;
+        height: 100vh;
+    
+        background-color: rgb(100, 73, 255);
+    
+        z-index: 10;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .direita.on a,
+    .direita.on form {
+        display: block;
+    }
+  
+    .direita.on .hamburger {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+  
+    .direita.on .hamburger .one {
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+  
+    .direita.on .hamburger .two {
+        opacity: 0;
+    } 
+  
+    .direita.on .hamburger .three {
+        transform: rotate(-45deg) translate(8px, -9px);
+    }
+    
+    .direita.on {
+        text-align: center;
+        display: block;
+    }
+  
+    .direita.on a,
+    .direita.on form {
+        margin-top: 50px;
+        transition-duration: .5s;
+        font-size: 30px;
+        line-height: 40px;
+        display: block;
+    }
+    .direita.on input {
+        margin-left: 5%;
+        width: 60%;
+    }
+    .direita.on input[type="submit"] {
+        margin-left: 0;
+        left: -5%;
+        width: 15%;
+    }   
+
+}
+@media (max-width: 600px) {
+    section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .direita.on input[type="submit"] {
+        margin-left: 0;
+        left: -7%;
+        width: 18%;
+    }   
 }

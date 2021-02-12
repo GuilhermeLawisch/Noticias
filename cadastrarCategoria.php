@@ -1,10 +1,8 @@
 <?php
     require_once "layout.php";
     require_once "classeNoticia.php";
-
-    $n = new Noticia("noticias", "localhost", "root", "");
+    require_once "conexao.php";
 ?>
-
     <section>
         <form action="" method="post">
             <div class="cadCategoria">
