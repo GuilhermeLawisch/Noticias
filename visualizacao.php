@@ -1,6 +1,6 @@
 <?php
     require_once "classeNoticia.php";
-    require_once "layout.php";
+    require_once "layout.html";
     require_once "conexao.php";
 
     if (isset($_GET['idVisualizar']) && !empty($_GET['idVisualizar'])) {
@@ -17,6 +17,9 @@
                 echo "<p>$value</p>";
             } else if ($key == "id") {
                 echo "<a href='cadastrarNoticia.php?idEditar={$value}'>Editar</a>";
+            } else if ($key == "data_envio") {
+                $dataLocal = strtotime($value);
+                echo "<p class='data'>Atualizado ". date('d/m/Y H:i:s', $dataLocal)."</p>";
             }
         }
         echo "</div>";

@@ -1,5 +1,5 @@
 <?php
-    require_once "layout.php";
+    require_once "layout.html";
     require_once "classeNoticia.php";
     require_once "conexao.php";
 ?>

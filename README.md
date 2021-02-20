@@ -18,3 +18,8 @@ Novas funcionalidades
 
 Próximos updates
 - adição da data e hora de envio na página de visulização
+
+`versão 0.3 ; 20/02/2021`
+Novas funcionalidades
+- adição da data e hora de envio na página de visulização
+- novo layout

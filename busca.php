@@ -1,9 +1,10 @@
 <?php
     require_once "classeNoticia.php";
-    require_once "layout.php";
+    require_once "layout.html";
     require_once "conexao.php";
 
     $noRepeat = [];
+    $vazio = [];
     $testeDeRepeticoes = 0;
     if (isset($_GET['nBusca']) && !empty($_GET['nBusca'])) {
         echo "<section>";
@@ -34,7 +35,7 @@
                 }
             }
         } else {
-            $vazio = 1;
+            $vazio[] = 1;
         }
         $dados3 = $n->buscarNoticiasTitulo($pesquisa);  // BUSCA POR TITULO
         if ($dados3 != false) {
@@ -82,10 +83,13 @@
                 }
             }
         } else {
-            if ($vazio == 1) {
+            $vazio[] = 1;
+            if (count($vazio) == 2) {
                 echo "<h3>Nenhuma notícia encontrada.<h3>";
             }
         }
         echo "</section>";
-    } 
+    } else {
+        header('location: noticias.php');
+    }
 ?>

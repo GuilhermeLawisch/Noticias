@@ -1,11 +1,11 @@
 <?php
-    require_once "layout.php";
+    require_once "layout.html";
     require_once "classeNoticia.php";
     require_once "conexao.php";
 ?>
-    <section>
-        <form action="" method="post">
-            <div class="cadCategoria">
+    <section class="cad">
+        <div class="cadCategoria">
+            <form action="" method="post">
                 <div>
                     <h2>Cadastrar Categoria</h2>
                 </div>
@@ -27,8 +27,8 @@
                         }
                     }
                 ?>
-            </div>    
-        </form>
+            </form>   
+        </div> 
     </section>
 </body>
 </html>

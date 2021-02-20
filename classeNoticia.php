@@ -2,22 +2,6 @@
 class Noticia {
     private $pdo;
 
-    /*
-    CREATE TABLE conteudo (
-        id int auto_increment primary key,
-        titulo varchar(50),
-        categoria int,
-        texto varchar(500),
-        data_envio date,
-        foreign key (categoria) references categoria(id_categoria)
-    ) DEFAULT CHARSET = utf8;
-
-    CREATE TABLE categoria (
-        id_categoria int auto_increment primary key,
-        categoria varchar(20)
-    ) DEFAULT CHARSET = utf8;
-    */
-
     function __construct($dbname, $host, $user, $senha) {
         try {
             $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $senha);
@@ -27,18 +11,17 @@ class Noticia {
             echo "Erro2: {$e->getMessage()}";
         }
     }
-    function cadastrarNoticia($titulo, $categoria, $texto, $data) {
+    function cadastrarNoticia($titulo, $categoria, $texto) {
         $cmd = $this->pdo->prepare("SELECT id FROM conteudo WHERE titulo = :t");
         $cmd->bindValue(":t", $titulo);
         $cmd->execute();
         if ($cmd->rowCount() > 0) {
             return false;
         } else {
-            $cmd = $this->pdo->prepare("INSERT INTO conteudo(titulo, categoria, texto, data_envio) VALUES (:t, :c, :txt, :d)");
+            $cmd = $this->pdo->prepare("INSERT INTO conteudo(titulo, categoria, texto, data_envio) VALUES (:t, :c, :txt, NOW())");
             $cmd->bindValue(":t", $titulo);
             $cmd->bindValue(":c", $categoria);
             $cmd->bindValue(":txt", $texto);
-            $cmd->bindValue(":d", $data);
             $cmd->execute();
             return true;
         }
@@ -56,19 +39,18 @@ class Noticia {
             return true;
         }
     }
-    function atualizarNoticia($id, $titulo, $categoria, $texto, $data) {
-        $cmd = $this->pdo->prepare("UPDATE conteudo SET titulo = :t, categoria = :c, texto = :txt, data_envio = :d WHERE id = :id");
+    function atualizarNoticia($id, $titulo, $categoria, $texto) {
+        $cmd = $this->pdo->prepare("UPDATE conteudo SET titulo = :t, categoria = :c, texto = :txt, data_envio = NOW() WHERE id = :id");
         $cmd->bindValue(":t", $titulo);
         $cmd->bindValue(":c", $categoria);
         $cmd->bindValue(":txt", $texto);
         $cmd->bindValue(":id", $id);
-        $cmd->bindValue(":d", $data);
         $cmd->execute();
         return true;
     }
     function buscarNoticias() {
         $res = [];
-        $cmd = $this->pdo->query("SELECT * FROM conteudo");
+        $cmd = $this->pdo->query("SELECT * FROM conteudo ORDER BY data_envio DESC");
         $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
@@ -81,10 +63,9 @@ class Noticia {
         $res = $cmd->fetch(PDO::FETCH_ASSOC);
         return $res;
     }
-    // UNIR BUSCA
     function buscarNoticiasTitulo($titulo) {
         $res = [];
-        $cmd = $this->pdo->prepare("SELECT * FROM conteudo WHERE titulo LIKE :p");
+        $cmd = $this->pdo->prepare("SELECT * FROM conteudo WHERE titulo LIKE :p ORDER BY data_envio DESC");
         $cmd->bindValue(":p", "%$titulo%");
         $cmd->execute();
         $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
@@ -92,13 +73,12 @@ class Noticia {
     }
     function buscarNoticiaCategoria($categoria) {
         $res = [];
-        $cmd = $this->pdo->prepare("SELECT * FROM conteudo WHERE categoria = :c");
+        $cmd = $this->pdo->prepare("SELECT * FROM conteudo WHERE categoria = :c ORDER BY data_envio DESC");
         $cmd->bindValue(":c", $categoria);
         $cmd->execute();
         $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
-    // TESTE
     function buscarNoticiaTituloCategoria($pesquisaTitulo, $pesquisaCategoria) {
         $res = [];
         $cmd = $this->pdo->prepare("SELECT * FROM conteudo WHERE titulo LIKE :t OR categoria = :c");
@@ -108,7 +88,6 @@ class Noticia {
         $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
-
     function buscarCategorias() {
         $res = [];
         $cmd = $this->pdo->query("SELECT * FROM categoria"); 
